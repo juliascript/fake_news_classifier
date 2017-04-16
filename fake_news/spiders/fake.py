@@ -8,4 +8,11 @@ class FakeSpider(scrapy.Spider):
     start_urls = ['https://www.archive-it.org/collections/8142/?show=Sites/']
 
     def parse(self, response):
-        pass
+        links = response.xpath('//*[@class="url"]/a/@href').extract()
+        print links
+
+        for link in links:
+        	# go to that page and scrape all data from each site, 
+        	# for now we can look at only the most recent archive
+        	# yield scrapy.http.Request(link)
+        	pass
